@@ -25,6 +25,13 @@ const validateRegisterInput = (data) => {
     errors.password = `Password must be between ${passwordMinChars} and ${passwordMaxChars} characters long`;
   }
 
+  // check name field
+  if (isEmpty(data.name)) {
+    errors.name = "Name field can not be empty";
+  } else if (!Validator.isLength(data.name, { min: 2, max: 30 })) {
+    errors.name = "Name must be between 2 and 30 characters long";
+  }
+
   // check confirm password field
   if (isEmpty(data.confirmPassword)) {
     errors.confirmPassword = "Confirm Password field is required";
