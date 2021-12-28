@@ -100,8 +100,6 @@ router.post("/login", async (req, res) => {
       secure: process.env.NODE_ENV === "production",
     });
 
-    console.log(process.env.NODE_ENV);
-
     const userToReturn = { ...user._doc };
     delete userToReturn.password;
 
