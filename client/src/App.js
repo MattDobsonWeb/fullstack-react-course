@@ -1,8 +1,13 @@
 import "./main.scss";
+import { AuthProvider } from "./context/GlobalContext";
 import Layout from "./components/Layout";
 
 function App() {
-  return <Layout />;
+  return (
+    <AuthProvider>
+      <Layout />
+    </AuthProvider>
+  );
 }
 
 export default App;
