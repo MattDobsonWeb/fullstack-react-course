@@ -62,76 +62,80 @@ const AuthBox = ({ register }) => {
           <h1>{register ? "Register" : "Login"}</h1>
         </div>
 
-        {register && (
-          <div className="auth__field">
-            <label>Name</label>
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
+        <form onSubmit={onSubmit}>
+          {register && (
+            <div className="auth__field">
+              <label>Name</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
 
-            {errors.name && <p className="auth__error">{errors.name}</p>}
-          </div>
-        )}
-
-        <div className="auth__field">
-          <label>Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-
-          {errors.email && <p className="auth__error">{errors.email}</p>}
-        </div>
-
-        <div className="auth__field">
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          {/* <p className="auth__error">Something went wrong</p> */}
-          {errors.password && <p className="auth__error">{errors.password}</p>}
-        </div>
-
-        {register && (
-          <div className="auth__field">
-            <label>Confirm Password</label>
-            <input
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-
-            {errors.confirmPassword && (
-              <p className="auth__error">{errors.confirmPassword}</p>
-            )}
-          </div>
-        )}
-
-        <div className="auth__footer">
-          {Object.keys(errors).length > 0 && (
-            <p className="auth__error">
-              {register ? "You have some validation errors" : errors.error}
-            </p>
-          )}
-
-          <button className="btn" onClick={onSubmit} disabled={loading}>
-            {register ? "Register" : "Login"}
-          </button>
-
-          {!register && (
-            <div className="auth__register">
-              <p>
-                Not a member? <Link to="/register">Register now</Link>
-              </p>
+              {errors.name && <p className="auth__error">{errors.name}</p>}
             </div>
           )}
-        </div>
+
+          <div className="auth__field">
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+
+            {errors.email && <p className="auth__error">{errors.email}</p>}
+          </div>
+
+          <div className="auth__field">
+            <label>Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+
+            {/* <p className="auth__error">Something went wrong</p> */}
+            {errors.password && (
+              <p className="auth__error">{errors.password}</p>
+            )}
+          </div>
+
+          {register && (
+            <div className="auth__field">
+              <label>Confirm Password</label>
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+
+              {errors.confirmPassword && (
+                <p className="auth__error">{errors.confirmPassword}</p>
+              )}
+            </div>
+          )}
+
+          <div className="auth__footer">
+            {Object.keys(errors).length > 0 && (
+              <p className="auth__error">
+                {register ? "You have some validation errors" : errors.error}
+              </p>
+            )}
+
+            <button className="btn" type="submit" disabled={loading}>
+              {register ? "Register" : "Login"}
+            </button>
+
+            {!register && (
+              <div className="auth__register">
+                <p>
+                  Not a member? <Link to="/register">Register now</Link>
+                </p>
+              </div>
+            )}
+          </div>
+        </form>
       </div>
     </div>
   );
