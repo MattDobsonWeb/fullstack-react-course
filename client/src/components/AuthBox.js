@@ -42,9 +42,7 @@ const AuthBox = ({ register }) => {
     axios
       .post(register ? "api/auth/register" : "/api/auth/login", data)
       .then((res) => {
-        if (res?.data?.user) {
-          getCurrentUser();
-        }
+        getCurrentUser();
       })
       .catch((err) => {
         setLoading(false);
